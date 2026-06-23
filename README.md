@@ -2,7 +2,7 @@
 
 **A hypergraph-native message-passing layer based on Eidi-Otter-inspired connectivity patterns**
 
-This repository contains the surveys, implementation, and experiments developed as part of a BSc thesis project. The project studies whether message passing can be defined directly from hypergraph connectivity patterns, without first reducing the hypergraph to a graph or to a general relational structure.
+This repository contains the surveys, implementation, and experiments developed as part of a BSc thesis project. The project studies how pairwise, vertex-centered message passing can be conditioned directly by hypergraph connectivity patterns, rather than relying only on an unweighted graph projection or on a fully general relational structure.
 
 The proposed **EO-Pattern** layer combines:
 
@@ -11,7 +11,7 @@ The proposed **EO-Pattern** layer combines:
 
 ## Guiding question
 
-> Can message passing on hypergraphs be defined directly from hyperedge connectivity patterns (Eidi & Otter, 2025), rather than by first reducing the hypergraph to a graph or to a general relational structure (Taha et al., 2025)?
+> Can a pairwise, vertex-centered message-passing layer be conditioned directly by hyperedge connectivity patterns (Eidi & Otter, 2025), rather than relying only on an unweighted graph projection or on a general relational structure (Taha et al., 2025)?
 
 ## Repository structure
 
@@ -137,11 +137,11 @@ Node classification is evaluated on the Cora and Citeseer co-citation hypergraph
 
 | Model | Cora accuracy | Citeseer accuracy |
 |---|---:|---:|
-| Clique-GCN | 79.9 ± 1.5% | 73.2 ± 1.4% |
+| Clique-GCN | **79.9 ± 1.5%** | **73.2 ± 1.4%** |
 | EO-A | 76.2 ± 1.2% | 72.4 ± 1.1% |
 | EO-B | 76.6 ± 1.3% | 72.5 ± 1.1% |
 | EO-C | 76.2 ± 1.5% | 72.6 ± 1.1% |
-| **EO-D** | **76.3 ± 1.4%** | **72.5 ± 0.9%** |
+| **EO-D** | 76.3 ± 1.4% | 72.5 ± 0.9% |
 | EO-E | 76.6 ± 1.3% | 72.6 ± 1.1% |
 
 This is a negative result for `χ` on these datasets: EO-D and EO-E perform essentially identically, and no EO variant improves on Clique-GCN. The benchmark therefore provides no evidence that the structured organization of `χ` is useful for these co-citation tasks.
