@@ -1,6 +1,6 @@
 # eompp
 
-**A hypergraph-native message-passing layer based on Eidi-Otter-inspired connectivity patterns**
+**A hypergraph-derived, vertex-centered message-passing layer based on Eidi-Otter-inspired connectivity patterns**
 
 This repository contains the surveys, implementation, and experiments developed as part of a BSc thesis project. The project studies how pairwise, vertex-centered message passing can be conditioned directly by hypergraph connectivity patterns, rather than relying only on an unweighted graph projection or on a fully general relational structure.
 
