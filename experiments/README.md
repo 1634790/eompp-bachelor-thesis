@@ -52,7 +52,7 @@ pip install -r Benchmark/requirements_benchmark.txt
 ```bash
 cd Synthetic
 python experiment_synthetic.py
-# variants:  --quick  |  --decomposition triangles  |  --feature-mode random
+# variants:  --quick  |  --feature-mode random
 ```
 
 **Experiment 2 - Benchmark (node classification).** 50/25/25 random splits, multi-seed, resumable.

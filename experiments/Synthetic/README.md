@@ -18,14 +18,7 @@ hypergraphs on the same vertex set**:
 |    class    | hypergraph |                                   hyperedges                                   |
 |-------------|------------|--------------------------------------------------------------------------------|
 |  0 - "big"  |  `H_big`   |                    the original cliques, one hyperedge each                    |
-| 1 - "small" |  `H_small` | each clique replaced by smaller hyperedges whose clique expansion is unchanged |
-
-The smaller hyperedges are controlled by `decomposition`:
-
-* `"edges"` (default): each clique `C_i` becomes all its pairwise edges.
-* `"triangles"` (harder): each clique `C_i` is covered by triangles through
-  one pivot vertex. In the implementation, one pivot vertex is chosen, and
-  triangles are formed with the pivot and every pair of the remaining vertices.
+| 1 - "small" |  `H_small` |                 each clique replaced by all its pairwise edges                 |
 
 **By construction `clique_expansion(H_big) == clique_expansion(H_small)`**
 (asserted for every twin pair). Node features are shared between twins. Hence
@@ -51,8 +44,8 @@ Seven models (graph-classification wrappers around the shared `eompp` layers):
 
 ## Results
 
-Test accuracy, mean ± std over 5 seeds, for the committed default run
-(`feature_mode=constant`, edge decomposition):
+Test accuracy, mean ± std over 5 seeds, for the committed run
+(`feature_mode=constant`):
 
 ```
           Model           |  Accuracy (%) |  Macro-F1 (%) |
@@ -101,7 +94,6 @@ pip install -e ..                              # installs the eompp package
 python experiment_synthetic.py                 # full run (constant features)
 python experiment_synthetic.py --quick         # fast sanity check
 python experiment_synthetic.py --feature-mode random
-python experiment_synthetic.py --decomposition triangles
 ```
 
 Each run writes a `results_synthetic*.json` with the full config and per-seed

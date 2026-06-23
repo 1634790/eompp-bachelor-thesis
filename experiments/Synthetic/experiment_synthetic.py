@@ -15,7 +15,6 @@ Run
 ---
     python experiment_synthetic.py                 # default config
     python experiment_synthetic.py --quick         # small/fast sanity check
-    python experiment_synthetic.py --decomposition triangles
 """
 
 import argparse
@@ -39,7 +38,6 @@ class Config:
     def __init__(self):
         # dataset
         self.n_base_graphs = 300
-        self.decomposition = "edges"     # "edges" or "triangles"
         self.feature_mode = "constant"   # "constant" or "random"
         self.feat_dim = 16
         self.k_range = (2, 5)            # number of cliques per base graph
@@ -157,13 +155,12 @@ def run(cfg):
     print("Synthetic experiment :  big vs small hyperedges, identical")
     print("                        clique expansion")
     print("=" * 72)
-    print(f"decomposition = {cfg.decomposition!r}   "
-          f"feature_mode = {cfg.feature_mode!r}")
+    print(f"feature_mode = {cfg.feature_mode!r}")
 
     # data
     examples = make_dataset(
         n_base=cfg.n_base_graphs, seed=cfg.data_seed,
-        decomposition=cfg.decomposition, feature_mode=cfg.feature_mode,
+        feature_mode=cfg.feature_mode,
         feat_dim=cfg.feat_dim, k_range=cfg.k_range,
         size_range=cfg.size_range, overlap_max=cfg.overlap_max)
     train_ex, val_ex, test_ex = split_dataset(examples, seed=cfg.split_seed)
@@ -237,7 +234,6 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--quick", action="store_true",
                         help="small/fast config for a sanity check")
-    parser.add_argument("--decomposition", choices=["edges", "triangles"])
     parser.add_argument("--feature-mode", choices=["constant", "random"])
     args = parser.parse_args()
 
@@ -247,10 +243,6 @@ def main():
         cfg.max_epochs = 120
         cfg.seeds = (0, 1)
         cfg.results_path = "results_synthetic_quick.json"
-    if args.decomposition:
-        cfg.decomposition = args.decomposition
-        if cfg.decomposition == "triangles":
-            cfg.size_range = (4, 6)        # triangles need clique size >= 4
     if args.feature_mode:
         cfg.feature_mode = args.feature_mode
 

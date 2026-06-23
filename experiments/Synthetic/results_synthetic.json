@@ -1,7 +1,6 @@
 {
   "config": {
     "n_base_graphs": 300,
-    "decomposition": "edges",
     "feature_mode": "constant",
     "feat_dim": 16,
     "k_range": [
