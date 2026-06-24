@@ -34,7 +34,10 @@ Each experiment directory contains its own README, executable scripts, dependenc
 
 ## EO-Pattern layer
 
-Let `H = (V, E)` be a hypergraph, let `E(v,u)` be the set of hyperedges containing both `v` and `u`, and let `d_H(v)` be the number of hyperedges incident to `v`. For adjacent vertices `v != u`, define the raw connection mass
+Let `H = (V, E)` be a hypergraph, let `E(v,u)` be the collection of hyperedges containing both `v` and `u`, with 
+repeated hyperedges counted according to their multiplicity, and let `d_H(v)` be the number of hyperedges of 
+cardinality at least two incident to `v`, also counted with multiplicity. For adjacent vertices `v != u`, define 
+the raw connection mass
 
 ```math
 Z_{vu}
@@ -51,7 +54,8 @@ P^{\mathrm{EE}}(v,u)
 \frac{Z_{vu}}{d_H(v)}.
 ```
 
-For every non-isolated vertex, `P^EE` is row-stochastic. Connections through smaller hyperedges contribute more strongly than connections through larger ones.
+For every non-isolated vertex, `P^EE` is row-stochastic. Connections through smaller 
+hyperedges contribute more strongly than connections through larger ones.
 
 The cardinality descriptor is
 
@@ -64,7 +68,10 @@ The cardinality descriptor is
 \mathbf{e}_{b(|e|)},
 ```
 
-where `e_b(|e|)` is the one-hot vector associated with the cardinality bin of `e`. Cardinalities above the chosen maximum are placed in an overflow bin. Thus, `χ_vu` is a fixed structural descriptor, not a learned embedding; the message function learns how to use it.
+where `e_b(|e|)` is the one-hot vector associated with the cardinality bin of `e`. 
+Cardinalities greater than or equal to the chosen cutoff are placed in the final bin. 
+Thus, `χ_vu` is a fixed structural descriptor, not a learned embedding; the message 
+function learns how to use it.
 
 One layer performs
 
@@ -176,7 +183,7 @@ pip install -e .
 The benchmark additionally requires TopoNetX:
 
 ```bash
-pip install -r Benchmark/requirements_benchmark.txt
+(cd Benchmark && pip install -r requirements_benchmark.txt)
 ```
 
 ## Reproducing the experiments

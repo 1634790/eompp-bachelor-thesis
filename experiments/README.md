@@ -43,7 +43,7 @@ mode, so every experiment folder can `import eompp`. The Benchmark experiment
 additionally needs TopoNetX:
 
 ```bash
-pip install -r Benchmark/requirements_benchmark.txt
+(cd Benchmark && pip install -r requirements_benchmark.txt)
 ```
 
 ## Run
