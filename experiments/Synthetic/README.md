@@ -24,8 +24,8 @@ hypergraphs on the same vertex set**:
 (asserted for every twin pair). Node features are shared between twins. Hence
 any model that is a function of the clique expansion alone receives *identical
 input* for the two classes and, since the dataset contains both twins,
-**cannot exceed 50 % accuracy**. The two hypergraphs differ *only* in
-hyperedge cardinality, which is exactly what χ encodes. Splitting is by base
+**cannot exceed 50 % accuracy**. The two hypergraphs differ in how the same pairwise support is grouped into
+hyperedges of different cardinalities, which is the distinction exposed by χ. Splitting is by base
 graph, so the 50 %-bound holds inside every split.
 
 ## The models (the ablation grid)

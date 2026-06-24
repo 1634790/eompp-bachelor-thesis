@@ -8,7 +8,7 @@ graph-classification nets (which differ in pooling / residual / dropout /
 head) wrap these same layers.
 
   * GCNLayer / GINLayer  : clique-expansion graph convolutions.
-  * AllDeepSetsLayer     : hypergraph-native Deep Sets layer (Chien 2022).
+  * AllDeepSetsLayer     : in-house mean-normalized Deep Sets-style layer.
   * EOPatternLayer       : the proposed EO-Pattern layer; two booleans
                            (use_pee, use_chi) select the ablation variant.
 """
@@ -92,13 +92,16 @@ class GINLayer(nn.Module):
 
 
 # --------------------------------------------------------------------------
-# Hypergraph-native Deep Sets layer (Chien et al., 2022).
+# Mean-normalized Deep Sets-style incidence layer. (Chien et al., 2022).
 # --------------------------------------------------------------------------
 class AllDeepSetsLayer(nn.Module):
-    """One AllDeepSets layer: Deep Sets in both propagation directions.
+    """In-house Deep Sets-style layer using mean aggregation.
 
         z_e  = rho_V( mean_{v in e}  phi_V(h_v) )      (node  -> hyperedge)
         h_v' = rho_E( mean_{e in v}  phi_E(z_e) )      (hyperedge -> node)
+
+    Unlike the published AllDeepSets architecture, this implementation uses
+    means rather than sums in both propagation directions.
     """
 
     def __init__(self, hidden, dropout):

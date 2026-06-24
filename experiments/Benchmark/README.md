@@ -16,7 +16,7 @@ held-out test set. Nine models are compared:
 |   control    |     `MLP`     |           none (features only)           |
 |    graph     | `Clique-GCN`  |    clique expansion of the hypergraph    |
 |    graph     | `Clique-GIN`  |    clique expansion of the hypergraph    |
-|  hg-derived  | `AllDeepSets` |  incidence matrix (Chien et al., 2022)   | (Note: our reimpl. of it)
+|  hg-derived  | `AllDeepSets` | incidence matrix; mean aggregation in both directions |
 |   ablation   |    `EO-A`     | EO layer, no P^EE, no chi (uniform mean) |
 |   ablation   |    `EO-B`     |           EO layer, P^EE only            |
 |   ablation   |    `EO-C`     |            EO layer, chi only            |
@@ -97,7 +97,7 @@ width 128.
 |            MLP             |  73.8 +/- 1.4  |  75.1 +/- 2.0  |  72.2 +/- 0.9  |    74.9 +/- 1.9   |
 |         Clique-GCN         |  79.9 +/- 1.5  |  85.0 +/- 1.7  |  73.2 +/- 1.4  |    76.3 +/- 2.1   |
 |         Clique-GIN         |  76.5 +/- 1.4  |  82.8 +/- 1.5  |  71.3 +/- 1.0  |    73.9 +/- 2.0   |
-|        AllDeepSets         |  75.2 +/- 1.5  |  76.5 +/- 2.0  |  73.1 +/- 1.0  |    75.9 +/- 1.9   |
+| AllDeepSets (mean variant) |  75.2 +/- 1.5  |  76.5 +/- 2.0  |  73.1 +/- 1.0  |    75.9 +/- 1.9   |
 | EO-A: Uniform EO baseline  |  76.2 +/- 1.2  |  80.3 +/- 1.4  |  72.4 +/- 1.1  |    75.7 +/- 1.6   |
 |      EO-B: P^EE only       |  76.6 +/- 1.3  |  80.9 +/- 1.6  |  72.5 +/- 1.1  |    76.0 +/- 1.5   |
 |       EO-C: chi only       |  76.2 +/- 1.5  |  80.4 +/- 2.2  |  72.6 +/- 1.1  |    76.0 +/- 1.8   |

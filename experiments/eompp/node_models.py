@@ -11,7 +11,7 @@ class logits:
   * MLP            : ignores all structure (control baseline).
   * Clique-GCN     : GCN on the clique expansion (graph baseline).
   * Clique-GIN     : GIN on the clique expansion (graph baseline).
-  * AllDeepSets    : hypergraph-native incidence baseline (Chien 2022).
+  * AllDeepSets    : in-house mean-normalized Deep Sets-style baseline.
   * EOPatternNet   : the proposed model; (use_pee, use_chi) select the
                      ablation variant
                          A: -/-   B: pee/-   C: -/chi   D: pee/chi
@@ -78,10 +78,10 @@ class CliqueGNN(nn.Module):
     
 
 # --------------------------------------------------------------------------
-# Hypergraph-native baseline: AllDeepSets.
+# In-house mean-normalized Deep Sets-style incidence baseline.
 # --------------------------------------------------------------------------
 class AllDeepSetsNet(nn.Module):
-    """AllDeepSets layer stack + linear classifier."""
+    """Mean-normalized Deep Sets-style layer stack and linear classifier."""
 
     def __init__(self, n_features, hidden, n_classes, n_layers=2, dropout=0.5):
         super().__init__()

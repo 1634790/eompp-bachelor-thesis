@@ -61,8 +61,9 @@ neither ingredient is redundant.
 ## Models
 
 The same nine models as the benchmark (from `eompp.node_models`, unchanged):
-MLP, Clique-GCN, Clique-GIN, AllDeepSets, and the EO ablations EO-A..E. EO-E is
-EO-D evaluated on globally shuffled `chi` - the negative control.
+MLP, Clique-GCN, Clique-GIN, the mean-normalized AllDeepSets-style variant, and
+the EO ablations EO-A..E. EO-E is EO-D evaluated on globally shuffled `chi`
+(the negative control).
 
 ## Results
 
@@ -74,7 +75,7 @@ Test accuracy (%), mean +/- std. Config: `m_decoys = 4`, 450 gadgets
 |            MLP            |   54.2 +/- 2.1   |        - (chance)        |
 |        Clique-GCN         |   63.5 +/- 3.8   |          floor           |
 |        Clique-GIN         |   63.3 +/- 3.5   |          floor           |
-|        AllDeepSets        |   54.9 +/- 0.0   | majority-class predictor |
+|AllDeepSets (mean variant) |   54.9 +/- 0.0   | majority-class predictor |
 | EO-A: uniform EO baseline |   62.5 +/- 3.9   |           0.0            |
 |      EO-B: P^EE only      |   68.1 +/- 3.2   |         **+5.6**         |
 |      EO-C: chi only       |   64.2 +/- 4.6   |         **+1.7**         |
